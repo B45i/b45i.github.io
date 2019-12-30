@@ -63,6 +63,15 @@
 			window.addEventListener('load', function () { document.body.className = document.body.className.replace(/\bis-loading\b/, ''); });
 			document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
 		}
+
+		(async () => {
+			if ('storage' in navigator && 'estimate' in navigator.storage) {
+				const { usage, quota } = await navigator.storage.estimate();
+				if (quota < 120000000) {
+					alert("Incognito ?! this is not porn you know 🧐");
+				}
+			}
+		})();
 	</script>
 
 </body>
